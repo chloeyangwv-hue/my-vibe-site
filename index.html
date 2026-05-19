@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chloe Yang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fff;
+      color: #111;
+      overflow-x: hidden;
+    }
+
+    /* Cap content width so ultra-wide monitors don't stretch everything */
+    nav,
+    .hero-text,
+    .about-section,
+    .projects-section,
+    .closing-section,
+    footer {
+      max-width: 1500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Hero image stays full-bleed; no max-width applied to it */
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 28px 56px;
+      gap: 40px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #111;
+      font-size: 15px;
+      font-weight: 400;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    /* ── HERO ── */
+    .hero-text { padding: 32px 80px 56px; }
+
+    .hero-name {
+      font-size: clamp(72px, 11vw, 140px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -3px;
+      margin-bottom: 44px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(22px, 3vw, 40px);
+      font-weight: 700;
+      line-height: 1.25;
+      max-width: 660px;
+      margin-left: 50%;
+    }
+
+    /* ── HERO IMAGE ── */
+    .hero-image {
+      width: 100%;
+      height: 65vh;
+      min-height: 400px;
+      background: #fff;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+    .hero-placeholder-label {
+      color: #999;
+      font-size: 16px;
+      font-style: italic;
+    }
+
+    /* ── ABOUT ── */
+    .about-section {
+      display: flex;
+      align-items: center;
+      gap: 0px;
+      padding: 100px 80px 100px 80px;
+      min-height: 500px;
+    }
+
+    .brain-col {
+      flex: 0 0 50%;
+      height: 520px;
+      position: relative;
+    }
+    #brain-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .about-col {
+      flex: 1;
+      padding-left: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .about-col p {
+      font-size: 18px;
+      line-height: 1.68;
+      color: #111;
+      max-width: 600px;
+    }
+    .about-col .lead {
+      font-size: clamp(22px, 2.4vw, 32px);
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-section { padding: 32px 80px 100px; }
+
+    .projects-heading {
+      font-size: clamp(44px, 7vw, 90px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -2px;
+      margin-bottom: 56px;
+      max-width: 580px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    /* Row 1: 40 / 60 split */
+    .project-card:nth-child(1) { grid-column: 1 / 6; }
+    .project-card:nth-child(2) { grid-column: 6 / 13; }
+
+    /* Row 2: 60 / 40 split */
+    .project-card:nth-child(3) { grid-column: 1 / 8; }
+    .project-card:nth-child(4) { grid-column: 8 / 13; }
+
+    /* Row 3: 55 / 45 split */
+    .project-card:nth-child(5) { grid-column: 1 / 7; }
+    .project-card:nth-child(6) { grid-column: 7 / 13; }
+
+    .project-card {
+      border-radius: 20px;
+      padding: 36px 36px 36px;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      min-height: 240px;
+      display: flex;
+      align-items: flex-start;
+      user-select: none;
+    }
+    .project-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 14px 44px rgba(0,0,0,0.13);
+    }
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card-title {
+      font-size: clamp(28px, 3.4vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #111;
+    }
+    .card-tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .card-teal       { background: #6ECFCF; }
+    .card-lime       { background: #C4F000; }
+    .card-coral      { background: #F47E6A; }
+    .card-lightblue  { background: #70C8DF; }
+    .card-periwinkle { background: #8686D8; }
+    .card-purple     { background: #C07FCC; }
+
+    /* ── CLOSING ── */
+    .closing-section { padding: 60px 80px 0; }
+    .closing-inner {
+      margin-left: 40%;
+      max-width: 520px;
+    }
+    .closing-inner p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+    .closing-inner a { color: #111; text-decoration: underline; }
+    .signature-wrap {
+      margin: 40px 0 0;
+      text-align: center;
+    }
+    .signature-wrap img {
+      height: 440px;
+      width: auto;
+      display: inline-block;
+    }
+
+    /* ── FOOTER BAR ── */
+    footer {
+      margin-top: 80px;
+      padding: 22px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .copy { font-size: 14px; color: #111; }
+    .footer-links { display: flex; gap: 32px; }
+    .footer-links a {
+      text-decoration: none;
+      color: #111;
+      font-size: 14px;
+    }
+    .footer-links a:hover { text-decoration: underline; }
+
+    /* ── PROJECT MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      z-index: 500;
+      overflow-y: auto;
+    }
+    .modal-overlay.open {
+      display: block;
+      animation: slideUp 0.22s ease;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      padding: 28px 56px;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 10;
+    }
+    .modal-back {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: #111;
+      text-decoration: underline;
+      padding: 0;
+    }
+    .modal-body { padding: 60px 80px 80px; }
+    .modal-body h1 {
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -2px;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    /* per-project content panels */
+    .modal-content { display: none; }
+    .modal-content.active { display: block; }
+
+    /* two-column involvement layout */
+    .involvement-layout {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+    }
+    .involvement-text {
+      flex: 0 0 42%;
+    }
+    .involvement-text p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #111;
+      margin-bottom: 20px;
+    }
+    .involvement-text a {
+      color: #111;
+      text-decoration: underline;
+    }
+    .involvement-preview {
+      flex: 1;
+      min-width: 0;
+    }
+    .pdf-wrapper {
+      position: relative;
+    }
+    .pdf-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 10px;
+    }
+    .pdf-viewer {
+      width: 100%;
+      height: 480px;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* podcast page */
+    .podcast-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      flex: 0 0 38%;
+    }
+    .podcast-logo {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 20px;
+      display: block;
+    }
+    .listen-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border: 2px solid #111;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #111;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.15s, color 0.15s;
+    }
+    .listen-btn:hover {
+      background: #111;
+      color: #fff;
+    }
+    .podcast-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .podcast-desc {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #111;
+    }
+    .episode-embeds {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* research rows */
+    .research-row {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .research-row:last-child { border-bottom: none; }
+    .research-logo {
+      flex: 0 0 180px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 4px;
+    }
+    .research-logo img {
+      width: 100%;
+      max-height: 150px;
+      object-fit: contain;
+    }
+    .research-content { flex: 1; }
+    .research-content h2 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .research-content .research-meta {
+      font-size: 15px;
+      color: #888;
+      margin-bottom: 16px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .research-content p {
+      font-size: 19px;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 12px;
+    }
+    .research-content p:last-child { margin-bottom: 0; }
+    .research-content a {
+      color: #111;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    /* placeholder panels */
+    .modal-placeholder {
+      font-size: 18px;
+      color: #888;
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    /* ── BENEFIT COSMETICS MODAL ── */
+    .benefit-intro {
+      font-size: 19px;
+      line-height: 1.75;
+      color: #333;
+      max-width: 760px;
+      margin-bottom: 40px;
+    }
+    .benefit-section-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    /* brow pen left | mosaic right — mosaic shrinks to match brow pen height */
+    .benefit-split {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+    .benefit-brow-col {
+      flex: 0 0 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .benefit-brow-col h3 {
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .benefit-brow-col > img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.10);
+    }
+    /* 2×2 mosaic — fixed row height to match brow pen natural height at 220px width */
+    /* brow pen: 638×2125 → at 220px wide = ~733px tall → (733-12)/2 ≈ 360px per row */
+    .benefit-mosaic {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(2, 360px);
+      gap: 12px;
+    }
+    .benefit-mosaic .benefit-card {
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0,0,0,0.2) transparent;
+    }
+    .benefit-mosaic .benefit-card img {
+      width: 100%;
+      height: auto;
+      object-fit: unset;
+    }
+    /* hover card with overlaid label */
+    .benefit-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: default;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .benefit-card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 10px 36px rgba(0,0,0,0.18);
+      z-index: 2;
+    }
+    .benefit-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .benefit-card-label {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      color: #111;
+      pointer-events: none;
+    }
+    /* ── BENEFIT BUNNY ── */
+    .modal-content[data-content="benefit"] { position: relative; }
+    .benefit-bunny {
+      position: absolute;
+      top: 24px;
+      right: 72px;
+      width: 96px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .bunny-whole {
+      animation: bunny-bounce 0.38s ease-in-out infinite;
+      transform-origin: 48px 140px;
+    }
+    .bunny-leg-l {
+      animation: leg-l 0.38s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: 50% 20%;
+    }
+    .bunny-leg-r {
+      animation: leg-r 0.38s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: 50% 20%;
+    }
+    .bunny-mascara {
+      animation: mascara-wobble 0.38s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+    }
+    @keyframes bunny-bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+    @keyframes leg-l {
+      0%, 100% { transform: rotate(-22deg); }
+      50%       { transform: rotate(22deg); }
+    }
+    @keyframes leg-r {
+      0%, 100% { transform: rotate(22deg); }
+      50%       { transform: rotate(-22deg); }
+    }
+    @keyframes mascara-wobble {
+      0%, 100% { transform: rotate(-4deg); }
+      50%       { transform: rotate(4deg); }
+    }
+
+    /* ── MAJOR TOM MODAL ── */
+    .majortom-layout {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+      margin-top: 40px;
+    }
+    .majortom-img-col {
+      flex: 0 0 48%;
+    }
+    .majortom-img-col img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.10);
+      display: block;
+    }
+    .majortom-text-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .majortom-text-col p {
+      font-size: 19px;
+      line-height: 1.75;
+      color: #333;
+    }
+    .blog-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: background 0.2s ease;
+      align-self: flex-start;
+    }
+    .blog-btn:hover { background: #444; }
+
+    /* badgal row: text left | image right */
+    .benefit-badgal-row {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+    .benefit-badgal-text-col {
+      flex: 1;
+      font-size: 18px;
+      line-height: 1.75;
+      color: #333;
+    }
+    .benefit-badgal-img-col {
+      flex: 0 0 52%;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 20px 28px; gap: 24px; }
+      .hero-text { padding: 24px 28px 40px; }
+      .hero-subtitle { margin-left: 0; }
+      .about-section { flex-direction: column; padding: 60px 28px; }
+      .brain-col { width: 100%; flex: none; height: 300px; }
+      .about-col { padding: 32px 0 0; }
+      .about-col p { max-width: 100%; }
+      .projects-section { padding: 60px 28px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card { grid-column: 1 / -1 !important; }
+      .closing-section { padding: 60px 28px 0; }
+      .closing-inner { margin-left: 0; }
+      footer { padding: 20px 28px; flex-direction: column; gap: 16px; align-items: flex-start; }
+      .modal-body { padding: 40px 28px; }
+      .modal-header { padding: 20px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="https://www.linkedin.com/in/chloe-yang-a30a23247/" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="mailto:chloeyang.wv@gmail.com">Connect</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero-text">
+  <h1 class="hero-name">Hey,<br>I'm Chloe</h1>
+  <p class="hero-subtitle">— a current freshman and budding entrepreneur at Claremont McKenna College</p>
+</section>
+
+<!-- ── HERO IMAGE ── -->
+<div class="hero-image" id="hero-image-wrap">
+  <img src="hero.jpg" alt="Chloe Yang">
+</div>
+
+<!-- ── ABOUT ── -->
+<section class="about-section">
+  <div class="brain-col">
+    <canvas id="brain-canvas"></canvas>
+  </div>
+  <div class="about-col">
+    <p>I've spent the last few years understanding what makes people think and achieve what they do. I've explored behavioral psychology in the laboratory, created a podcast discussing psychology and behavior with a variety of professionals, and developed my own mindfulness journal to help adolescents deal with stress and anxiety.</p>
+    <p class="lead">I'm now interested in exploring the applications of behavior in enterprise and business. Brilliant strategies come from brilliant teams and optimization.</p>
+    <p>I'm looking for initiatives and opportunities that allow me to build upon and apply my current knowledge to explore the intersectionality of the mind and corporation.</p>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section class="projects-section">
+  <h2 class="projects-heading">Explore my involvements below:</h2>
+  <div class="projects-grid">
+    <div class="project-card card-teal"       data-project="mindfulness">
+      <div class="card-content">
+        <p class="card-title">Mindfulness Journal</p>
+        <span class="card-tag">Project</span>
+      </div>
+    </div>
+    <div class="project-card card-lime"       data-project="podcast">
+      <div class="card-content">
+        <p class="card-title">"The Deep Dive" Podcast</p>
+        <span class="card-tag">Project</span>
+      </div>
+    </div>
+    <div class="project-card card-coral"      data-project="ubc">
+      <div class="card-content">
+        <p class="card-title">Research Experiences</p>
+      </div>
+    </div>
+    <div class="project-card card-lightblue"  data-project="benefit">
+      <div class="card-content">
+        <p class="card-title">Digital Marketing Internship @ Benefit Cosmetics</p>
+        <span class="card-tag">Internship</span>
+      </div>
+    </div>
+    <div class="project-card card-periwinkle" data-project="majortom">
+      <div class="card-content">
+        <p class="card-title">Media Internship @ Major Tom Marketing Agency</p>
+        <span class="card-tag">Internship</span>
+      </div>
+    </div>
+    <div class="project-card card-purple"     data-project="positrace">
+      <div class="card-content">
+        <p class="card-title">Finance &amp; Accounting @ Positrace</p>
+        <span class="card-tag">Internship — Ongoing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLOSING ── -->
+<section class="closing-section">
+  <div class="closing-inner">
+    <p>Ready? Let's <a href="mailto:chloeyang.wv@gmail.com" id="get-started-link">get started</a>.</p>
+  </div>
+  <div class="signature-wrap">
+    <img src="signature.png" alt="Chloe Yang signature">
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="copy">© Chloe Yang</span>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/chloe-yang-a30a23247/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="resume.pdf" target="_blank">Resume</a>
+    <a href="mailto:chloeyang.wv@gmail.com">Connect</a>
+  </div>
+</footer>
+
+<!-- ── PROJECT MODAL ── -->
+<div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true">
+  <div class="modal-header">
+    <button class="modal-back" id="modal-back">← Back</button>
+  </div>
+
+  <!-- MINDFULNESS JOURNAL -->
+  <div class="modal-content" data-content="mindfulness">
+    <div class="modal-body">
+      <h1>Mindfulness Journal</h1>
+      <div class="involvement-layout">
+        <div class="involvement-text">
+          <p>My mindfulness journal is a self-designed, self-published journal I created to improve access to wellbeing tools for adolescents. As of today, it's been used by 45 registered clinicians in therapy, Canadian alternative education and Indigenous programs, and homeless youth at Covenant House, a nonprofit where I volunteer. I also host mindfulness workshops at the local library, helping peers understand themselves through self-reflection.</p>
+          <p>The journal is available in 9 provinces and 37 schools across Canada. I also received multiple grants totalling $3,052 from the Public Health Agency of Canada to expand my journal's reach.</p>
+          <p>Download the full version of my journal <a href="journal-download.pdf" target="_blank">here</a>.</p>
+        </div>
+        <div class="involvement-preview">
+          <div class="pdf-wrapper">
+            <p class="pdf-label">Preview</p>
+            <iframe src="journal-preview.pdf#toolbar=1&navpanes=0&scrollbar=1"
+                    class="pdf-viewer"
+                    title="Mindfulness Journal Preview"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE DEEP DIVE PODCAST -->
+  <div class="modal-content" data-content="podcast">
+    <div class="modal-body">
+      <h1>"The Deep Dive" Podcast</h1>
+      <div class="involvement-layout">
+
+        <!-- LEFT: logo + listen button -->
+        <div class="involvement-text podcast-left">
+          <img src="podcast-logo.png" alt="The Deep Dive Podcast" class="podcast-logo">
+          <a href="https://open.spotify.com/show/0U0VaJJIAuHxPCS3kRDCLA?si=fbea5701b38c4a7e"
+             target="_blank" rel="noopener" class="listen-btn">Listen here ↗</a>
+        </div>
+
+        <!-- RIGHT: description + episode embeds -->
+        <div class="involvement-preview podcast-right">
+          <p class="podcast-desc">My podcast, "The Deep Dive," is where I connect psychology to the everyday. Through my episodes, I interview PhD candidates, psychology professors, and Paralympic medalist Nathan Clement to explore and understand behavior in different people across different contexts.</p>
+
+          <div class="episode-embeds">
+            <iframe style="border-radius:12px"
+              src="https://open.spotify.com/embed/episode/18vtWTTcZFKoxgfDbK4vq0?utm_source=generator"
+              width="100%" height="152" frameBorder="0" allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"></iframe>
+            <iframe style="border-radius:12px"
+              src="https://open.spotify.com/embed/episode/0GkbrylJBI7A2wQlwct6Am?utm_source=generator"
+              width="100%" height="152" frameBorder="0" allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- UBC RESEARCH -->
+  <div class="modal-content" data-content="ubc">
+    <div class="modal-body">
+      <h1>Research</h1>
+
+      <!-- Row 1: UCLA -->
+      <div class="research-row">
+        <div class="research-logo">
+          <img src="logo-ucla.png" alt="UCLA logo">
+        </div>
+        <div class="research-content">
+          <h2>Independent Research</h2>
+          <div class="research-meta">UCLA · 2022–2023</div>
+          <p>Performed a meta-analysis of social media's influence on adolescent mental health under Dr. Bridget Callaghan (UCLA). Wrote a 30-page paper uncovering how patterns of behavior driven by technological design, including constant notifications, dopamine-driven rewards, and FOMO created systems of loneliness, anxiety, and chronic sleep deprivation. Published in Horizon Academic's 7% acceptance rate student journal and accessed by 620 researchers.</p>
+          <p><a href="https://doi.org/10.62439/harp-151" target="_blank">view publication →</a></p>
+        </div>
+      </div>
+
+      <!-- Row 2: Dalhousie -->
+      <div class="research-row">
+        <div class="research-logo">
+          <img src="logo-dal.png" alt="Dalhousie University logo">
+        </div>
+        <div class="research-content">
+          <h2>Independent Research</h2>
+          <div class="research-meta">Dalhousie University · 2024</div>
+          <p>Wrote a 36-page synthesis paper on digital intervention methods for adolescent homelessness under Dr. Jeff Karabanow (Dalhousie). Delved into how technology could support the maintenance of positive and healthy social contacts associated with fewer depressive symptoms and a reduction in substance use. Published by the Journal of High School Science and reached 1225 individuals in 11 countries.</p>
+          <p><a href="https://doi.org/10.64336/001c.129567" target="_blank">view publication →</a></p>
+        </div>
+      </div>
+
+      <!-- Row 3: UBC BAR Lab -->
+      <div class="research-row">
+        <div class="research-logo">
+          <img src="logo-ubc.png" alt="UBC logo">
+        </div>
+        <div class="research-content">
+          <h2>Research Assistant — BAR Lab</h2>
+          <div class="research-meta">University of British Columbia · 2025–Present</div>
+          <p>Shadowed Prof. Alan Kingstone and BAR lab members during 7+ social and cognitive psychology experiments, gaining hands-on experience with data collection, encoding, programming language R, and specialized equipment like the Eyelink 1000. Designed and conducted a pilot experiment investigating the effects of emotion on eye contact and helping behavior with Pupil Labs' eye tracker. Conducted scoping literature reviews on the Medusa Effect.</p>
+        </div>
+      </div>
+
+      <!-- Row 4: UBC Social Health Lab -->
+      <div class="research-row">
+        <div class="research-logo">
+          <img src="logo-ubc.png" alt="UBC logo">
+        </div>
+        <div class="research-content">
+          <h2>Research Assistant — Social Health Lab</h2>
+          <div class="research-meta">University of British Columbia · 2025–Present</div>
+          <p>Helped research how oral contraceptive pills affect teenagers' social and emotional development with MA student Marisa Nelson & Prof. Frances Chen. Assisted in participant recruitment through poster design and distribution outreach, conducting a bi-weekly literature search on teen health and wellbeing, as well as creating an experiment infographic for participants.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BENEFIT COSMETICS -->
+  <div class="modal-content" data-content="benefit">
+
+    <div class="modal-body">
+      <h1>Digital Marketing Internship @ Benefit Cosmetics</h1>
+      <p class="benefit-intro">At Benefit Cosmetics, I created action plans and CRM newsletters for product launches using Adobe and Microsoft PowerPoint. Furthermore, I executed local trade activations and analyzed omnichannel ideas and trends on TikTok and Meta platforms for PR collaborations.</p>
+
+      <p class="benefit-section-title">Sample Designs</p>
+
+      <!-- Brow pen left | 2×2 mosaic right — matched height -->
+      <div class="benefit-split">
+
+        <div class="benefit-brow-col">
+          <h3>Mighty Brow Pen Campaign</h3>
+          <img src="benefit-brow-pen.png" alt="Mighty Brow Pen Assignment">
+        </div>
+
+        <div class="benefit-mosaic">
+          <div class="benefit-card">
+            <span class="benefit-card-label">Valentine's Day</span>
+            <img src="benefit-newsletter-2.png" alt="Valentine's Day Newsletter">
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-card-label">National Brow Day</span>
+            <img src="benefit-newsletter-3.png" alt="National Brow Day Newsletter">
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-card-label">New Year's</span>
+            <img src="benefit-newsletter-4.png" alt="New Year's Newsletter">
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-card-label">Mother's Day</span>
+            <img src="benefit-newsletter-5.png" alt="Mother's Day Newsletter">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Badgal: text left | image right -->
+      <div class="benefit-badgal-row">
+        <div class="benefit-badgal-text-col">
+          <p>In addition to the aforementioned design examples, I proposed a UX-focused virtual experience for the launch of Benefit Cosmetics' Badgal Bounce Mascara, incorporating immersive VR elements to enhance customer engagement and leading to successful implementation on the brand's website.</p>
+        </div>
+        <div class="benefit-badgal-img-col">
+          <div class="benefit-card">
+            <span class="benefit-card-label">Badgal Bounce Mascara Launch</span>
+            <img src="benefit-badgal.png" alt="Badgal Bounce immersive experience">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAJOR TOM -->
+  <div class="modal-content" data-content="majortom">
+    <div class="modal-body">
+      <h1>Media Internship @ Major Tom Marketing Agency</h1>
+      <div class="majortom-layout">
+        <div class="majortom-img-col">
+          <img src="majortom-overview.png" alt="Major Tom Company Overview">
+        </div>
+        <div class="majortom-text-col">
+          <p>At Major Tom, I helped media reporting and optimization &amp; conducted an Advertiser Outcome Score report for a 4M+ per year client. I ensured correct advertisement pacing and analyzed Google Ad Campaigns for Caivan Real Estate and the Little Potato Company. Additionally, I created a slide deck to introduce a new partnership with Offset, a carbon reduction company that identifies and provides tailored carbon-offsetting solutions. I also published a blog post on adolescent perspectives of AI in marketing.</p>
+          <a class="blog-btn" href="https://www.majortom.com/mercury-blog/gen-z-view-on-ai-in-marketing" target="_blank">Read Blog Here</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POSITRACE -->
+  <div class="modal-content" data-content="positrace">
+    <div class="modal-body">
+      <h1>Finance &amp; Accounting @ Positrace</h1>
+      <p class="modal-placeholder">Full write-up coming soon — check back shortly for details on this involvement.</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ───────────────── PROJECT MODAL ───────────────── */
+  const TITLES = {
+    mindfulness : 'Mindfulness Journal',
+    podcast     : '"The Deep Dive" Podcast',
+    ubc         : 'Research @ The University of British Columbia',
+    benefit     : 'Digital Marketing Internship @ Benefit Cosmetics',
+    majortom    : 'Media Internship @ Major Tom Marketing Agency',
+    positrace   : 'Finance & Accounting @ Positrace',
+  };
+
+  const modal     = document.getElementById('project-modal');
+  const modalBack = document.getElementById('modal-back');
+  const contents  = modal.querySelectorAll('.modal-content');
+
+  function openModal(id) {
+    contents.forEach(c => c.classList.toggle('active', c.dataset.content === id));
+    modal.classList.add('open');
+    modal.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => openModal(card.dataset.project));
+  });
+  modalBack.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+
+  /* ───────────────── 3-D BRAIN ───────────────── */
+  const canvas = document.getElementById('brain-canvas');
+  const col    = canvas.parentElement;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
+  camera.position.set(0, 0, 5.8);
+
+  function resizeBrain() {
+    const w = col.clientWidth;
+    const h = col.clientHeight;
+    if (!w || !h) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resizeBrain();
+  window.addEventListener('resize', resizeBrain);
+
+  /* -- layered noise for organic surface texture -- */
+  function snoise(x, y, z) {
+    return (
+      Math.sin(x * 3.2 + Math.cos(y * 2.7)) * Math.cos(z * 2.9 + Math.sin(x * 2.4)) * 0.50 +
+      Math.sin(x * 6.5) * Math.cos(y * 5.8 + 1.1) * Math.sin(z * 5.1 + 2.3) * 0.25 +
+      Math.sin(x * 11  + y * 9 + z * 7) * 0.10
+    );
+  }
+
+  /* -- Fibonacci sphere + noise deform -- */
+  const N   = 400;
+  const PHI = (1 + Math.sqrt(5)) / 2;
+  const pts = [];
+
+  for (let i = 0; i < N; i++) {
+    const theta = 2 * Math.PI * i / PHI;
+    const phi   = Math.acos(1 - 2 * (i + 0.5) / N);
+    const nx = Math.sin(phi) * Math.cos(theta);
+    const ny = Math.sin(phi) * Math.sin(theta);
+    const nz = Math.cos(phi);
+    const r  = 1.7 + snoise(nx, ny, nz) * 0.38;
+    pts.push(new THREE.Vector3(nx * r, ny * r * 0.80, nz * r * 0.88));
+  }
+
+  /* -- particle dots -- */
+  const dotGeo  = new THREE.BufferGeometry().setFromPoints(pts);
+  const dotMat  = new THREE.PointsMaterial({ color: 0x111111, size: 0.055, sizeAttenuation: true });
+  const dotMesh = new THREE.Points(dotGeo, dotMat);
+
+  /* -- connections -- */
+  const MAX_DIST  = 0.76;
+  const MAX_CONN  = 4;
+  const connCount = new Int32Array(N);
+  const connPairs = [];
+  const lineVerts = [];
+
+  for (let i = 0; i < N; i++) {
+    if (connCount[i] >= MAX_CONN) continue;
+    for (let j = i + 1; j < N; j++) {
+      if (connCount[i] >= MAX_CONN) break;
+      if (connCount[j] >= MAX_CONN) continue;
+      if (pts[i].distanceTo(pts[j]) < MAX_DIST) {
+        connPairs.push([i, j]);
+        connCount[i]++;
+        connCount[j]++;
+        lineVerts.push(
+          pts[i].x, pts[i].y, pts[i].z,
+          pts[j].x, pts[j].y, pts[j].z
+        );
+      }
+    }
+  }
+
+  const lineGeo  = new THREE.BufferGeometry();
+  lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(lineVerts, 3));
+  const lineMat  = new THREE.LineBasicMaterial({ color: 0x222222, transparent: true, opacity: 0.16 });
+  const lineMesh = new THREE.LineSegments(lineGeo, lineMat);
+
+  /* -- firing pulses (action potentials) -- */
+  const PULSE_N  = 20;
+  const pulseGeo = new THREE.SphereGeometry(0.048, 6, 6);
+  const pulseMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+  const pulses   = [];
+  const pulseData = [];
+
+  for (let k = 0; k < PULSE_N; k++) {
+    const mesh = new THREE.Mesh(pulseGeo, pulseMat);
+    pulses.push(mesh);
+    pulseData.push({
+      ci   : Math.floor(Math.random() * connPairs.length),
+      t    : Math.random(),
+      spd  : 0.004 + Math.random() * 0.009,
+      dir  : Math.random() > 0.5 ? 1 : -1,
+    });
+  }
+
+  /* -- scene assembly -- */
+  const brain = new THREE.Group();
+  brain.add(dotMesh, lineMesh, ...pulses);
+  scene.add(brain);
+
+  /* -- animate -- */
+  const tmp = new THREE.Vector3();
+  let t = 0;
+
+  (function loop() {
+    requestAnimationFrame(loop);
+    t += 0.005;
+
+    brain.rotation.y  = t * 0.28;
+    brain.rotation.x  = Math.sin(t * 0.11) * 0.08;
+
+    pulseData.forEach((pd, k) => {
+      pd.t += pd.spd * pd.dir;
+      if (pd.t > 1 || pd.t < 0) {
+        pd.dir *= -1;
+        if (Math.random() < 0.35) {
+          pd.ci = Math.floor(Math.random() * connPairs.length);
+          pd.t  = pd.dir > 0 ? 0 : 1;
+        }
+      }
+      const [a, b] = connPairs[pd.ci];
+      tmp.lerpVectors(pts[a], pts[b], Math.max(0, Math.min(1, pd.t)));
+      pulses[k].position.copy(tmp);
+    });
+
+    renderer.render(scene, camera);
+  })();
+
+})();
+</script>
+</body>
+</html>
