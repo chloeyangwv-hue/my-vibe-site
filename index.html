@@ -633,21 +633,69 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      /* Nav */
       nav { padding: 20px 28px; gap: 24px; }
+
+      /* Hero */
       .hero-text { padding: 24px 28px 40px; }
-      .hero-subtitle { margin-left: 0; }
+      .hero-subtitle { margin-left: 0; max-width: 100%; font-size: clamp(15px, 4vw, 20px); }
+
+      /* About */
       .about-section { flex-direction: column; padding: 60px 28px; }
-      .brain-col { width: 100%; flex: none; height: 300px; }
+      .brain-col { width: 100%; flex: none; height: 260px; }
       .about-col { padding: 32px 0 0; }
-      .about-col p { max-width: 100%; }
-      .projects-section { padding: 60px 28px; }
+      .about-col p { max-width: 100%; font-size: 16px; }
+
+      /* Projects grid */
+      .projects-section { padding: 32px 28px 60px; }
       .projects-grid { grid-template-columns: 1fr; }
-      .project-card { grid-column: 1 / -1 !important; }
+      .project-card { grid-column: 1 / -1 !important; min-height: 140px; }
+
+      /* Closing */
       .closing-section { padding: 60px 28px 0; }
       .closing-inner { margin-left: 0; }
+      .closing-inner p { font-size: clamp(28px, 8vw, 48px); }
+      .signature-wrap img { height: 240px; }
+
+      /* Footer */
       footer { padding: 20px 28px; flex-direction: column; gap: 16px; align-items: flex-start; }
-      .modal-body { padding: 40px 28px; }
-      .modal-header { padding: 20px 28px; }
+
+      /* Modal shell */
+      .modal-body { padding: 32px 20px 48px; }
+      .modal-header { padding: 16px 20px; }
+      .modal-body h1 { font-size: clamp(28px, 8vw, 48px); margin-bottom: 28px; }
+
+      /* Journal / involvement layout */
+      .involvement-layout { flex-direction: column; gap: 28px; }
+      .involvement-text { flex: none; width: 100%; }
+      .involvement-text p { font-size: 16px; }
+      .pdf-viewer { height: 300px; }
+
+      /* Podcast */
+      .involvement-layout .podcast-left { flex: none; width: 100%; align-items: center; }
+      .podcast-logo { max-width: 180px; }
+      .podcast-right { gap: 20px; }
+      .podcast-desc { font-size: 16px; }
+
+      /* Research rows */
+      .research-row { flex-direction: column; gap: 16px; align-items: flex-start; padding: 28px 0; }
+      .research-logo { flex: none; width: 80px; }
+      .research-content h2 { font-size: 19px; }
+      .research-content p { font-size: 15px; }
+
+      /* Benefit modal */
+      .benefit-intro { font-size: 16px; }
+      .benefit-split { flex-direction: column; gap: 24px; }
+      .benefit-brow-col { flex: none; width: 100%; max-width: 220px; margin: 0 auto; }
+      .benefit-mosaic { grid-template-rows: repeat(2, 200px); }
+      .benefit-badgal-row { flex-direction: column-reverse; gap: 20px; }
+      .benefit-badgal-img-col { flex: none; width: 100%; }
+      .benefit-badgal-text-col { font-size: 16px; }
+
+      /* Major Tom modal */
+      .majortom-layout { flex-direction: column; gap: 24px; margin-top: 24px; }
+      .majortom-img-col { flex: none; width: 100%; }
+      .majortom-text-col p { font-size: 16px; }
     }
   </style>
 </head>
@@ -656,7 +704,7 @@
 <!-- ── NAV ── -->
 <nav>
   <a href="https://www.linkedin.com/in/chloe-yang-a30a23247/" target="_blank" rel="noopener">LinkedIn</a>
-  <a href="mailto:chloeyang.wv@gmail.com">Connect</a>
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chloeyang.wv@gmail.com">Connect</a>
 </nav>
 
 <!-- ── HERO ── -->
@@ -727,7 +775,7 @@
 <!-- ── CLOSING ── -->
 <section class="closing-section">
   <div class="closing-inner">
-    <p>Ready? Let's <a href="mailto:chloeyang.wv@gmail.com" id="get-started-link">get started</a>.</p>
+    <p>Ready? Let's <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chloeyang.wv@gmail.com" id="get-started-link">get started</a>.</p>
   </div>
   <div class="signature-wrap">
     <img src="signature.png" alt="Chloe Yang signature">
@@ -740,7 +788,7 @@
   <div class="footer-links">
     <a href="https://www.linkedin.com/in/chloe-yang-a30a23247/" target="_blank" rel="noopener">LinkedIn</a>
     <a href="resume.pdf" target="_blank">Resume</a>
-    <a href="mailto:chloeyang.wv@gmail.com">Connect</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chloeyang.wv@gmail.com">Connect</a>
   </div>
 </footer>
 
