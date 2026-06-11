@@ -629,7 +629,7 @@
     .positrace-layout {
       display: flex;
       gap: 48px;
-      align-items: flex-start;
+      align-items: center;
       margin-top: 8px;
     }
     .positrace-text {
@@ -1091,9 +1091,9 @@
   <!-- MAJOR TOM -->
   <div class="modal-content" data-content="majortom">
     <div class="modal-body">
-      <div style="display:flex; align-items:center; gap:28px; margin-bottom: 8px;">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:28px; margin-bottom: 8px;">
         <h1 style="margin-bottom:0;">Media Internship @ Major Tom Marketing Agency</h1>
-        <img src="logo-majortom.webp" alt="Major Tom logo" style="height:56px; width:auto; flex-shrink:0;">
+        <img src="logo-majortom.webp" alt="Major Tom logo" style="height:90px; width:auto; flex-shrink:0;">
       </div>
       <div class="majortom-layout">
         <div class="majortom-img-col">
@@ -1110,10 +1110,7 @@
   <!-- POSITRACE -->
   <div class="modal-content" data-content="positrace">
     <div class="modal-body">
-      <div style="display:flex; align-items:center; gap:28px; margin-bottom: 8px;">
-        <h1 style="margin-bottom:0;">Intern @ PosiTrace</h1>
-        <img src="logo-positrace.png" alt="PosiTrace logo" style="height:64px; width:auto;">
-      </div>
+      <h1>Intern @ PosiTrace</h1>
 
       <div class="positrace-layout">
 
@@ -1128,8 +1125,9 @@
           </ul>
         </div>
 
-        <!-- Right: GitHub card + Positrace button -->
+        <!-- Right: logo + GitHub card + button, vertically centered -->
         <div class="positrace-right">
+          <img src="logo-positrace.png" alt="PosiTrace logo" style="height:110px; width:auto;">
           <a class="github-card" href="https://github.com/chloeyangwv-hue/positrace-meeting-agent" target="_blank" rel="noopener">
             <div class="github-card-header">
               <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
