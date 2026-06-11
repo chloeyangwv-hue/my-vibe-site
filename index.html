@@ -68,19 +68,12 @@
     /* ── HERO IMAGE ── */
     .hero-image {
       width: 100%;
-      height: 65vh;
-      min-height: 400px;
       background: #fff;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     .hero-image img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
+      height: auto;
+      display: block;
     }
     .hero-placeholder-label {
       color: #999;
@@ -632,6 +625,120 @@
       flex: 0 0 52%;
     }
 
+    /* ── POSITRACE MODAL ── */
+    .positrace-layout {
+      display: flex;
+      gap: 56px;
+      align-items: flex-start;
+      margin-top: 8px;
+    }
+    .positrace-text {
+      flex: 1;
+    }
+    .positrace-text p {
+      font-size: 19px;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 24px;
+    }
+    .positrace-text ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .positrace-text ul li {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #333;
+      padding-left: 20px;
+      position: relative;
+    }
+    .positrace-text ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+      font-size: 22px;
+      line-height: 1.4;
+    }
+    .positrace-text ul li strong {
+      font-weight: 700;
+      color: #111;
+    }
+    .positrace-right {
+      flex: 0 0 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    /* GitHub repo card */
+    .github-card {
+      border: 1px solid #d0d7de;
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      background: #fff;
+    }
+    .github-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+      border-color: #aaa;
+    }
+    .github-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .github-card-header svg {
+      flex-shrink: 0;
+      color: #555;
+    }
+    .github-card-repo {
+      font-size: 15px;
+      font-weight: 600;
+      color: #0969da;
+    }
+    .github-card-desc {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .github-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #777;
+    }
+    .github-lang-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #f1e05a;
+      flex-shrink: 0;
+    }
+    /* Positrace button */
+    .positrace-btn {
+      display: block;
+      text-align: center;
+      padding: 14px 28px;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: background 0.2s ease;
+    }
+    .positrace-btn:hover { background: #444; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       /* Nav */
@@ -701,6 +808,9 @@
       .majortom-layout { flex-direction: column; gap: 24px; margin-top: 24px; }
       .majortom-img-col { flex: none; width: 100%; }
       .majortom-text-col p { font-size: 16px; }
+      /* Positrace modal */
+      .positrace-layout { flex-direction: column; gap: 32px; }
+      .positrace-right { flex: none; width: 100%; }
     }
   </style>
 </head>
@@ -770,7 +880,7 @@
     </div>
     <div class="project-card card-purple"     data-project="positrace">
       <div class="card-content">
-        <p class="card-title">Finance &amp; Accounting @ Positrace</p>
+        <p class="card-title">Intern @ Positrace</p>
         <span class="card-tag">Internship — Ongoing</span>
       </div>
     </div>
@@ -992,8 +1102,40 @@
   <!-- POSITRACE -->
   <div class="modal-content" data-content="positrace">
     <div class="modal-body">
-      <h1>Finance &amp; Accounting @ Positrace</h1>
-      <p class="modal-placeholder">Full write-up coming soon — check back shortly for details on this involvement.</p>
+      <h1>Intern @ PosiTrace</h1>
+
+      <div class="positrace-layout">
+
+        <!-- Left: text -->
+        <div class="positrace-text">
+          <p>At PosiTrace, I gained experience across various sectors:</p>
+          <ul>
+            <li><strong>Workflow Optimization:</strong> Built an AI meeting workflow utilizing Claude, Google Scripts, and Google Suite, which automated note-taking, summarization, translation, and email drafting; doing so reduced the sales team's manual follow-up time to &lt;5 seconds.</li>
+            <li><strong>Sales:</strong> Conducted 100+ outbound sales calls identifying fleet expansion needs, closing 4 GPS tracker deals and gaining familiarity with HubSpot.</li>
+            <li><strong>Human Resources:</strong> Screened 166 Ruby on Rails engineering applicants using Bamboo HR, advancing qualified candidates through interview pipelines.</li>
+            <li><strong>Finance:</strong> Reconciled balance sheets, income statements, and cash flow statements, alongside entering accrued expenses, in QuickBooks to ensure reporting accuracy.</li>
+          </ul>
+        </div>
+
+        <!-- Right: GitHub card + Positrace button -->
+        <div class="positrace-right">
+          <a class="github-card" href="https://github.com/chloeyangwv-hue/positrace-meeting-agent" target="_blank" rel="noopener">
+            <div class="github-card-header">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+              </svg>
+              <span class="github-card-repo">positrace-meeting-agent</span>
+            </div>
+            <p class="github-card-desc">AI meeting workflow automating note-taking, summarization, translation, and email drafting for the PosiTrace sales team.</p>
+            <div class="github-card-footer">
+              <span class="github-lang-dot"></span>
+              <span>JavaScript</span>
+            </div>
+          </a>
+          <a class="positrace-btn" href="https://www.positrace.com" target="_blank" rel="noopener">Visit PosiTrace →</a>
+        </div>
+
+      </div>
     </div>
   </div>
 
@@ -1011,7 +1153,7 @@
     ubc         : 'Research @ The University of British Columbia',
     benefit     : 'Digital Marketing Internship @ Benefit Cosmetics',
     majortom    : 'Media Internship @ Major Tom Marketing Agency',
-    positrace   : 'Finance & Accounting @ Positrace',
+    positrace   : 'Intern @ Positrace',
   };
 
   const modal     = document.getElementById('project-modal');
